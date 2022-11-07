@@ -12,5 +12,5 @@ app.get('/', (req, res) => {
     res.send('bismillah');
 });
 app.listen(port, () => {
-    return `⚡️[server]: Server is running at http://localhost:${port}`;
+    return `[server]: Server is running at http://localhost:${port}`;
 });
