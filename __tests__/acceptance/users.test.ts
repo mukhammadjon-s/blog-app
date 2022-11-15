@@ -7,7 +7,7 @@ require('dotenv').config();
 let connection, server;
 
 const testUser =  {
-  firstName: "Phantom",
+  first_name: "Phantom",
   pass: 'password',
   lastName: "Assassin",
   age: 24

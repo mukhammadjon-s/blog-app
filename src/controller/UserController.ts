@@ -16,7 +16,7 @@ export class UserController {
     
     async save(request: Request, response: Response, next: NextFunction) {
         return this.userRepository.save({
-        firstName: "Phantom",
+        first_name: "Phantom",
         pass: 'password',
         lastName: "Assassin",
         age: 24

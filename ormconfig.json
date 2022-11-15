@@ -4,7 +4,7 @@
    "port": 5432,
    "username": "postgres",
    "password": "postgres",
-   "database": "dreamhome",
+   "database": "template1",
    "synchronize": true,
    "logging": false,
    "entities": [
