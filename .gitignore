@@ -1,1 +1,8 @@
-node_modules
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+.env
+>>>>>>> f7cafc748143a20b354a027b385e71801ec20095
