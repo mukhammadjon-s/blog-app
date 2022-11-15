@@ -9,13 +9,13 @@
     
     // insert new users for test
     await connection.manager.save(connection.manager.create(User, {
-        firstName: "Timber",
+        first_namee: "Timber",
         pass: await bcryptjs.hash('password', 10),
         lastName: "Saw",
         age: 27
     }));
     await connection.manager.save(connection.manager.create(User, {
-        firstName: "Phantom",
+        first_name: "Phantom",
         pass: await bcryptjs.hash('password', 10),
         lastName: "Assassin",
         age: 24
