@@ -5,7 +5,7 @@ enum UserType {
   organization = 'org'
 }
 
-import {Like} from './Like'
+import {Likes} from './Like'
 import {Follow} from './Follows'
 @Entity()
 export class User {
@@ -40,8 +40,8 @@ export class User {
     @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
     created_at: string;
 
-    @OneToMany(() => Like, like => like.user)
-    likes: Like[];
+    @OneToMany(() => Likes, like => like.user)
+    likes: Likes[];
 
     @OneToMany(() => Follow, follow => follow.following)
     following: Follow[];

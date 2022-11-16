@@ -10,15 +10,22 @@ export class Comment {
   id: number;
   
   @ManyToOne(() => Blog, (blog) => blog.likes)
+  @JoinColumn({
+    name: "blog_id" })
   blog: Blog;
 
   @ManyToOne(() => User, (user) => user.likes)
+  @JoinColumn({
+    name: "user_id" })
   user: User;
 
   @ManyToOne(() => Comment, (comment) => comment.comment_id)
    @JoinColumn({
     name: "parent_id" })
   parent_id: Comment;
+
+  @Column()
+  content: string;
 
   @OneToMany(() => Comment, (comment) => comment.parent_id)
   comment_id: Comment[];

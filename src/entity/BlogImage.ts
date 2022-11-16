@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm";
 
 import {Blog} from "./Blog"; 
 
@@ -12,6 +12,7 @@ export class BlogImage {
   image: string;
   
   @ManyToOne(() => Blog, (blog) => blog.blogImage)
+  @JoinColumn({name:'blog_id'})
   blog: Blog;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})

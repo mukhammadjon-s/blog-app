@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn} from "typeorm";
 
 enum BlogStatus {
   private = 'private',
@@ -6,8 +6,9 @@ enum BlogStatus {
 }
 
 import {Category} from "./Category"; 
-import {Like} from "./Like"; 
+import {Likes} from "./Like"; 
 import {BlogImage} from "./BlogImage"; 
+import {BlogTag} from "./BlogTag"; 
 
 @Entity()
 export class Blog {
@@ -31,10 +32,14 @@ export class Blog {
   created_at: string;
   
   @ManyToOne(() => Category, (category) => category.blogs)
+  @JoinColumn({name:'category_id'})
   category: Category
 
-  @OneToMany(() => Like, like => like.blog)
-  likes: Like[];
+  @OneToMany(() => Likes, like => like.blog)
+  likes: Likes[];
+
+  @OneToMany(() => BlogTag, blogTag => blogTag.blog)
+  blogTag: Likes[];
 
   @OneToMany(() => BlogImage, blogImage => blogImage.blog)
   blogImage: BlogImage[];
