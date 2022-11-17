@@ -5,16 +5,17 @@ import {Blog} from "./Blog";
 @Entity()
 export class BlogImage {
   
+  @Column({name: 'id', type:'int', nullable: false})
   @PrimaryGeneratedColumn('increment')
-  id: number;
+  public readonly id: number;
 
-  @Column()
-  image: string;
+  @Column({name: 'image', type:'text', nullable: false})
+  public readonly image: string;
   
   @ManyToOne(() => Blog, (blog) => blog.blogImage)
   @JoinColumn({name:'blog_id'})
-  blog: Blog;
+  public readonly blog: Blog;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
-  created_at: string;
+  @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+  public readonly createdAt: string;
 }

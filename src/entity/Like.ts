@@ -1,24 +1,25 @@
 import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm";
 
 import {Blog} from "./Blog"; 
-import {User} from "./User"; 
+import {Users} from "./User"; 
 
 @Entity()
 export class Likes {
   
+  @Column({name: 'id', type:'int', nullable: false})
   @PrimaryGeneratedColumn('increment')
-  id: number;
+  public readonly id: number;
   
   @ManyToOne(() => Blog, (blog) => blog.likes)
   @JoinColumn({
     name: "blog_id" })
-  blog: Blog;
+  public readonly blog: Blog;
 
-  @ManyToOne(() => User, (user) => user.likes)
+  @ManyToOne(() => Users, (user) => user.likes)
   @JoinColumn({
     name: "user_id" })
-  user: User;
+  public readonly user: Users;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
-  created_at: string;
+  @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+  public readonly createdAt: string;
 }

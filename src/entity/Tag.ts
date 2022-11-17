@@ -5,15 +5,16 @@ import {BlogTag} from './BlogTag'
 @Entity()
 export class Tag {
   
+  @Column({name: 'id', type:'int', nullable: false})
   @PrimaryGeneratedColumn('increment')
-  id: number;
+  public readonly id: number;
 
-  @Column()
-  content: string;
+  @Column({name: 'content', type:'varchar', nullable: false})
+  public readonly content: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
-  created_at: string;
+  @Column({ name:'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+  public readonly createdAt: string;
 
   @OneToMany(() => BlogTag, blogTag => blogTag.tag)
-    blogTag: BlogTag[];
+  public readonly blogTag: BlogTag[];
 }

@@ -2,7 +2,7 @@
   import * as bcryptjs from "bcryptjs";
   import app from './app'
   import {createConnection} from "typeorm";
-  import {User} from "./entity/User";
+  import {Users} from "./entity/User";
   
   createConnection().then(async connection => {
     app.listen(process.env.PORT);

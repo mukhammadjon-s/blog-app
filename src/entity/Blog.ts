@@ -13,34 +13,35 @@ import {BlogTag} from "./BlogTag";
 @Entity()
 export class Blog {
   
+  @Column({name: 'id', type:'int', nullable: false})
   @PrimaryGeneratedColumn('increment')
-  id: number;
+  public readonly id: number;
   
-  @Column()
-  title: string;
+  @Column({name: 'title', type:'varchar', nullable: false})
+  public readonly title: string;
   
-  @Column()
-  content: string;
+  @Column({name: 'content', type:'text', nullable: false})
+  public readonly content: string;
   
-  @Column()
-  main_img: string;
+  @Column({name: 'main_img', type:'varchar', nullable: true})
+  public readonly mainImg!: string | null;
   
-  @Column('text')
-  status: BlogStatus;
+  @Column({name: 'status', type:'text', nullable: true})
+  public readonly status!: BlogStatus | null;
   
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
-  created_at: string;
+  @Column({ name:'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+  public readonly createdAt: string;
   
   @ManyToOne(() => Category, (category) => category.blogs)
   @JoinColumn({name:'category_id'})
-  category: Category
+  public readonly category: Category
 
   @OneToMany(() => Likes, like => like.blog)
-  likes: Likes[];
+  public readonly likes: Likes[];
 
   @OneToMany(() => BlogTag, blogTag => blogTag.blog)
-  blogTag: Likes[];
+  public readonly blogTag: Likes[];
 
   @OneToMany(() => BlogImage, blogImage => blogImage.blog)
-  blogImage: BlogImage[];
+  public readonly blogImage: BlogImage[];
 }
